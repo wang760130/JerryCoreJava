@@ -1,10 +1,10 @@
 package p13.computerthread;
 
 public class Computer {
-	// ±íÊ¾²Ö¿âÖĞ¿â´æÊı
+	// è¡¨ç¤ºä»“åº“ä¸­åº“å­˜æ•°
 	private int number = 10;
 	
-	// Íù²Ö¿âÀï´æ·ÅµçÄÔ
+	// å¾€ä»“åº“é‡Œå­˜æ”¾ç”µè„‘
 	public synchronized void put(String name){
 		if(number >= 10){
 			try{
@@ -12,16 +12,16 @@ public class Computer {
 			}catch (Exception e) {
 				e.printStackTrace();
 			}
-			System.out.println(Thread.currentThread().getName()+"£º´æ·ÅµÈ´ı---²Ö¿â¿â´æ×ã¹»");
+			System.out.println(Thread.currentThread().getName()+"ï¼šå­˜æ”¾ç­‰å¾…---ä»“åº“åº“å­˜è¶³å¤Ÿ");
 			return;
 		}
 		number+=1;
-		System.out.println(Thread.currentThread().getName()+"´æ·ÅÁËÒ»Ì¨"+name+"µçÄÔ,Ä¿Ç°¿â´æµçÄÔ×ÜÊıÎª:"+number);
-		// »½ĞÑËùÓĞµÈ´ıµÄÏß³Ì(Ïß³ÌÔÚÖ´ĞĞwait()·½·¨ºó£¬»áÊÍ·Å¶ÔÏóÍ¬²½Ëø)
+		System.out.println(Thread.currentThread().getName()+"å­˜æ”¾äº†ä¸€å°"+name+"ç”µè„‘,ç›®å‰åº“å­˜ç”µè„‘æ€»æ•°ä¸º:"+number);
+		// å”¤é†’æ‰€æœ‰ç­‰å¾…çš„çº¿ç¨‹(çº¿ç¨‹åœ¨æ‰§è¡Œwait()æ–¹æ³•åï¼Œä¼šé‡Šæ”¾å¯¹è±¡åŒæ­¥é”)
 		notifyAll();
 	}
 	
-	// Ïò²Ö¿âÀïÈ¡³öµçÄÔ
+	// å‘ä»“åº“é‡Œå–å‡ºç”µè„‘
 	public synchronized void get(String name) {
 		if(number <= 0){
 			try {
@@ -29,11 +29,11 @@ public class Computer {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			System.out.println(Thread.currentThread().getName()+": È¡µçÄÔÊÜ×è-ÒòÎª¿â´æÓàÊıÎª0");
+			System.out.println(Thread.currentThread().getName()+": å–ç”µè„‘å—é˜»-å› ä¸ºåº“å­˜ä½™æ•°ä¸º0");
 			return;
 		}
 		number-=1;
-		System.out.println(Thread.currentThread().getName()+"È¡³öÁËÒ»Ì¨"+name+"µçÄÔ,Ä¿Ç°µçÄÔ×ÜÊıÎª:"+number);
+		System.out.println(Thread.currentThread().getName()+"å–å‡ºäº†ä¸€å°"+name+"ç”µè„‘,ç›®å‰ç”µè„‘æ€»æ•°ä¸º:"+number);
 		notifyAll();
 	}
 }

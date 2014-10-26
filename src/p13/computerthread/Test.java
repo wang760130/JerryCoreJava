@@ -5,25 +5,25 @@ public class Test {
 	public static void main(String[] args) {
 		Computer computer = new Computer();
 		
-		// ¹¹ÔìÉú²úÕß
+		// æ„é€ ç”Ÿäº§è€…
 		Producer producer = new Producer(computer);
 		
-		// ¹¹ÔìÏû·ÑÕß
+		// æ„é€ æ¶ˆè´¹è€…
 		Consumer consumer = new Consumer(computer);
 		
-		// ´´½¨Éú²úÕßÁ½¸öÏß³Ì
+		// åˆ›å»ºç”Ÿäº§è€…ä¸¤ä¸ªçº¿ç¨‹
 		Thread t1 = new Thread(producer);
-		t1.setName("Éú²úÕßA");
+		t1.setName("ç”Ÿäº§è€…A");
 		Thread t2 = new Thread(producer);
-		t2.setName("Éú²úÕßB");
+		t2.setName("ç”Ÿäº§è€…B");
 
-		// ´´½¨Ïû·ÑÕßÁ½¸öÏß³Ì
+		// åˆ›å»ºæ¶ˆè´¹è€…ä¸¤ä¸ªçº¿ç¨‹
 		Thread t3 = new Thread(consumer);
-		t3.setName("Ïû·ÑÕßA");
+		t3.setName("æ¶ˆè´¹è€…A");
 		Thread t4 = new Thread(consumer);
-		t4.setName("Ïû·ÑÕßB");
+		t4.setName("æ¶ˆè´¹è€…B");
 		
-		// Æô¶¯Ïß³Ì
+		// å¯åŠ¨çº¿ç¨‹
 		t1.start();
 		t2.start();
 		t3.start();
